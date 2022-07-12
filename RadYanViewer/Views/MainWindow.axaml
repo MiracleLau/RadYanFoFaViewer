@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RadYanViewer.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:RadYanViewer.Views"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
+        x:Class="RadYanViewer.Views.MainWindow"
+        Width="900" Height="500"
+        Icon="/Assets/logo.png"
+        Title="RadYanViewer - By Radiation">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <TabControl Padding="20" >
+        <TabItem Header="搜索">
+            <views:SearchView />
+        </TabItem>
+        <TabItem Header="设置">
+            
+        </TabItem>
+        <TabItem Header="关于">
+            
+        </TabItem>
+    </TabControl>
+
+</Window>
