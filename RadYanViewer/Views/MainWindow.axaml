@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:RadYanViewer.Views"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
         x:Class="RadYanViewer.Views.MainWindow"
-        Width="900" Height="500"
+        Width="900" Height="530"
         Icon="/Assets/logo.png"
         Title="RadYanViewer - By Radiation">
 
@@ -22,7 +22,7 @@
             
         </TabItem>
         <TabItem Header="关于">
-            
+            <views:AboutView />
         </TabItem>
     </TabControl>
 
