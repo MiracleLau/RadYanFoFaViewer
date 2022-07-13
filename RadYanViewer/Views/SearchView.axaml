@@ -10,14 +10,26 @@
     </Design.DataContext>
     <StackPanel>
         <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto,Auto" >
-            <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding SearchString}" MinWidth="500" />
-            <Button Grid.Row="0" Grid.Column="1" Margin="5,0" Name="SearchButton" Command="{Binding SearchButton_Clicked}">开始搜索</Button>
-            <Button Grid.Row="0" Grid.Column="2" Name="ResetButton" Command="{Binding ResetButton_Clicked}">重置结果</Button>
+            <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding SearchString}" MinWidth="500" x:Name="SearchStringTextBox"/>
+            <Button 
+                Grid.Row="0" 
+                Grid.Column="1" 
+                Margin="5,0" 
+                x:Name="SearchButton" 
+                Click="SearchButton_OnClick" 
+                IsEnabled="{Binding SearchString,Converter={x:Static StringConverters.IsNotNullOrEmpty }}">开始搜索</Button>
+            <Button Grid.Row="0" Grid.Column="2" x:Name="ResetButton" Click="ResetButton_OnClick">重置结果</Button>
             <CheckBox Grid.Row="0" Grid.Column="3" IsChecked="{Binding IsNotFullData}" Margin="5,0">只获取最近一年的数据</CheckBox>
-            <DataGrid Grid.Row="1" Grid.Column="0" Items="{Binding SearchResults}" Height="400" Margin="0,10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="姓名" Binding="{Binding Name}"></DataGridTextColumn>
-                </DataGrid.Columns>
+            <DataGrid
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                Height="400"
+                Margin="0,10"
+                IsReadOnly="True"
+                Items="{Binding SearchResults}"
+                AutoGenerateColumns="True"
+                x:Name="SearchResultDataGrid">
             </DataGrid>
         </Grid>
     </StackPanel>

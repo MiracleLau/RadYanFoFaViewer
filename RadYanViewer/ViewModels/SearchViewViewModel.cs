@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using RadYanViewer.Models;
 using ReactiveUI;
@@ -8,6 +9,7 @@ namespace RadYanViewer.ViewModels;
 public class SearchViewViewModel: ViewModelBase
 {
     private string _searchString;
+    public readonly List<string> ReturnFields;
     public string SearchString
     {
         get => _searchString; 
@@ -21,25 +23,24 @@ public class SearchViewViewModel: ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _isNotFullData, value);
     }
 
-    public ObservableCollection<SearchResult> SearchResults { get; }
+    public ObservableCollection<SearchResult> SearchResults { get; set; }
 
     public SearchViewViewModel()
     {
         _isNotFullData = true;
         SearchResults = new ObservableCollection<SearchResult>();
-    }
-    
-    public void SearchButton_Clicked()
-    {
-        SearchResults.Add(new SearchResult
+        ReturnFields = new List<string>
         {
-            Name = "小燕燕"
-        });
-    }
-
-    public void ResetButton_Clicked()
-    {
-        SearchResults.Clear();
-        SearchString = "";
+            "host",
+            "ip",
+            "protocol",
+            "domain",
+            "port",
+            "title",
+            "icp",
+            "server",
+            "os",
+            "country_name"
+        };
     }
 }
