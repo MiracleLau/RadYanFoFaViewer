@@ -20,6 +20,18 @@
                 IsEnabled="{Binding SearchString,Converter={x:Static StringConverters.IsNotNullOrEmpty }}">开始搜索</Button>
             <Button Grid.Row="0" Grid.Column="2" x:Name="ResetButton" Click="ResetButton_OnClick">重置结果</Button>
             <CheckBox Grid.Row="0" Grid.Column="3" IsChecked="{Binding IsNotFullData}" Margin="5,0">只获取最近一年的数据</CheckBox>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                RowDefinitions="*,*"
+                ColumnDefinitions="*,*"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                IsVisible="{Binding IsLoading}">
+                <ProgressBar Grid.Row="0" Grid.Column="0" Height="8" Width="250" IsIndeterminate="True" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="正在搜索......" HorizontalAlignment="Center" Margin="0,10" />
+            </Grid>
             <DataGrid
                 Grid.Row="1"
                 Grid.Column="0"
@@ -28,9 +40,9 @@
                 Margin="0,10"
                 IsReadOnly="True"
                 Items="{Binding SearchResults}"
+                IsVisible="{Binding SearchResults,Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                 AutoGenerateColumns="True"
-                x:Name="SearchResultDataGrid">
-            </DataGrid>
+                x:Name="SearchResultDataGrid" />
         </Grid>
     </StackPanel>
 </UserControl>

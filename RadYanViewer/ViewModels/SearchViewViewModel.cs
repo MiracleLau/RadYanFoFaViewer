@@ -8,8 +8,16 @@ namespace RadYanViewer.ViewModels;
 
 public class SearchViewViewModel: ViewModelBase
 {
-    private string _searchString;
     public readonly List<string> ReturnFields;
+    private bool _isLoading;
+
+    public bool IsLoading
+    {
+        get => _isLoading;
+        set => this.RaiseAndSetIfChanged(ref _isLoading, value);
+    }
+    
+    private string _searchString;
     public string SearchString
     {
         get => _searchString; 
