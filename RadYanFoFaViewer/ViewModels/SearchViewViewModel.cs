@@ -57,5 +57,62 @@ public class SearchViewViewModel: ViewModelBase
             "os",
             "country_name"
         };
+        SearchPage = 1;
+    }
+
+    private int _totalPage;
+
+    public int TotalPage
+    {
+        get => _totalPage;
+        set => this.RaiseAndSetIfChanged(ref _totalPage, value);
+    }
+
+    private string _totalPageString;
+
+    public string TotalPageString
+    {
+        get => _totalPageString;
+        set => this.RaiseAndSetIfChanged(ref _totalPageString, value);
+    }
+
+    private int _totalSize;
+
+    public int TotalSize
+    {
+        get => _totalSize;
+        set => this.RaiseAndSetIfChanged(ref _totalSize, value);
+    }
+
+    private int _nowPage;
+
+    public int NowPage
+    {
+        get => _nowPage;
+        set => this.RaiseAndSetIfChanged(ref _nowPage, value);
+    }
+
+    private bool _isNotFirstPage;
+
+    public bool IsNotFirstPage
+    {
+        get => _isNotFirstPage;
+        set => this.RaiseAndSetIfChanged(ref _isNotFirstPage, value);
+    }
+    
+    private bool _isNotLastPage;
+
+    public bool IsNotLastPage
+    {
+        get => _isNotLastPage;
+        set => this.RaiseAndSetIfChanged(ref _isNotLastPage, value);
+    }
+
+    private int _searchPage;
+
+    public int SearchPage
+    {
+        get => _searchPage;
+        set => this.RaiseAndSetIfChanged(ref _searchPage, value);
     }
 }

@@ -9,7 +9,7 @@
         <vm:SearchViewViewModel />
     </Design.DataContext>
     <StackPanel>
-        <Grid RowDefinitions="*,*" ColumnDefinitions="*,Auto,Auto,Auto">
+        <Grid RowDefinitions="*,*,30" ColumnDefinitions="*,Auto,Auto,Auto">
             <TextBox 
                 Grid.Row="0" 
                 Grid.Column="0" 
@@ -54,6 +54,36 @@
                 IsVisible="{Binding SearchResults,Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
                 AutoGenerateColumns="True"
                 x:Name="SearchResultDataGrid" />
+            <WrapPanel
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Grid.ColumnSpan="4" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center">
+                <TextBlock Text="{Binding TotalPageString}" VerticalAlignment="Center"  />
+                <Button 
+                    Content="首页" 
+                    Margin="10,0" 
+                    IsEnabled="{Binding IsNotFirstPage}"
+                    x:Name="FirstPageButton"
+                    Click="FirstPageButton_OnClick"/>
+                <Button 
+                    Content="上一页" 
+                    IsEnabled="{Binding IsNotFirstPage}"
+                    x:Name="PrePageButton"
+                    Click="PrePageButton_OnClick"/>
+                <Button 
+                    Content="下一页" 
+                    Margin="10,0" 
+                    IsEnabled="{Binding IsNotLastPage}"
+                    x:Name="NextPageButton"
+                    Click="NextPageButton_OnClick"/>
+                <Button 
+                    Content="末页"
+                    IsEnabled="{Binding IsNotLastPage}"
+                    x:Name="LastPageButton"
+                    Click="LastPageButton_OnClick"/>
+            </WrapPanel>
         </Grid>
     </StackPanel>
 </UserControl>

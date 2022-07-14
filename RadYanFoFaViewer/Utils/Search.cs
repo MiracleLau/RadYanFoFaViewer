@@ -21,13 +21,13 @@ public static class Search
     /// <param name="page">返回第几页的数据</param>
     /// <param name="isNotFullData">是否只搜索最近一年的数据</param>
     /// <returns>格式化后搜索结果，如果未获取到数据，则返回null</returns>
-    public static List<SearchResult>? DoSearch(string searchString, List<string> fields, int page = 1, bool isNotFullData = true)
+    public static ApiResponseResult? DoSearch(string searchString, List<string> fields, int page = 1, bool isNotFullData = true)
     {
         var config = new Config();
         var apiEmail = "";
         var apiKey = "";
         var pageSize = 20;
-        if (page >= 1)
+        if (page <= 1)
         {
             page = 1;
         }
@@ -45,7 +45,6 @@ public static class Search
         var searchSetting = config.GetConfig("SearchSetting");
         if (searchSetting is not null)
         {
-            Console.WriteLine(searchSetting["PerPageSize"].AsInt32);
             pageSize = searchSetting["PerPageSize"].AsInt32;
         }
 
@@ -55,14 +54,23 @@ public static class Search
         var result = client.Search(searchString, page, pageSize, !isNotFullData);
         if (result is not {Error: false}) throw new Exception("未能获取数据，可能是Api Key信息未设置或超出每日额度。");
         if (result.Results == null) return null;
-        var results = result.Results;
-
+        var totalPage = result.Size / pageSize;
+        if (result.Size % pageSize != 0) totalPage += 1;
+        var response = new ApiResponseResult
+        {
+            Error = result.Error,
+            Mode = result.Mode,
+            Page = result.Page,
+            Query = result.Query,
+            Size = result.Size,
+            TotalPage = totalPage,
+            Results = new List<SearchResult>()
+        };
         var num = (page - 1) * pageSize;
-        var newResult = new List<SearchResult>();
-        foreach (var r in results)
+        foreach (var r in result.Results)
         {
             num++;
-            newResult.Add(new SearchResult
+            response.Results.Add(new SearchResult
             {
                 Id = num,
                 Host = r[0],
@@ -78,6 +86,6 @@ public static class Search
             });
         }
 
-        return newResult;
+        return response;
     }
 }

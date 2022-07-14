@@ -34,6 +34,13 @@ public partial class SearchView : UserControl
         _searchViewViewModel.IsSearchButtonEnabled = false;
         _searchViewViewModel.SearchResults.Clear();
         _searchViewViewModel.SearchString = "";
+        _searchViewViewModel.TotalPage = 0;
+        _searchViewViewModel.TotalSize = 0;
+        _searchViewViewModel.NowPage = 1;
+        _searchViewViewModel.SearchPage = 1;
+        _searchViewViewModel.TotalPageString = "";
+        _searchViewViewModel.IsNotFirstPage = false;
+        _searchViewViewModel.IsNotLastPage = false;
     }
 
     private void SearchButton_OnClick(object? sender, RoutedEventArgs e)
@@ -48,7 +55,7 @@ public partial class SearchView : UserControl
                 var results = Search.DoSearch(
                     _searchViewViewModel.SearchString, 
                     _searchViewViewModel.ReturnFields,
-                    1,
+                    _searchViewViewModel.SearchPage,
                     _searchViewViewModel.IsNotFullData);
                 if (results is not null)
                 {
@@ -56,8 +63,31 @@ public partial class SearchView : UserControl
                     {
                         _searchViewViewModel.IsLoading = false;
                         _searchViewViewModel.IsSearchButtonEnabled = true;
-                        results.ForEach(x=> _searchViewViewModel.SearchResults.Add(x));
+                        _searchViewViewModel.NowPage = results.Page;
+                        _searchViewViewModel.TotalSize = results.Size;
+                        _searchViewViewModel.TotalPage = results.TotalPage;
+                        if (results.Page == results.TotalPage)
+                        {
+                            _searchViewViewModel.IsNotFirstPage = true;
+                            _searchViewViewModel.IsNotLastPage = false;
+                        }else if(results.Page == 1)
+                        {
+                            _searchViewViewModel.IsNotLastPage = true;
+                            _searchViewViewModel.IsNotFirstPage = false;
+                        }
+                        else
+                        {
+                            _searchViewViewModel.IsNotFirstPage = true;
+                            _searchViewViewModel.IsNotLastPage = true;
+                        }
+                        _searchViewViewModel.TotalPageString = $"共{results.Size}条数据，第{results.Page}/{results.TotalPage}页";
+                        results.Results?.ForEach(x=> _searchViewViewModel.SearchResults.Add(x));
                     });
+                }
+                else
+                {
+                    _searchViewViewModel.IsLoading = false;
+                    _searchViewViewModel.IsSearchButtonEnabled = true;
                 }
             }).Start();
         }
@@ -72,5 +102,29 @@ public partial class SearchView : UserControl
     private void SearchStringTextBox_OnKeyUp(object? sender, KeyEventArgs e)
     {
         _searchViewViewModel.IsSearchButtonEnabled = !string.IsNullOrEmpty(_searchViewViewModel.SearchString);
+    }
+
+    private void FirstPageButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        _searchViewViewModel.SearchPage = 1;
+        SearchButton_OnClick(sender, e);
+    }
+
+    private void PrePageButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        _searchViewViewModel.SearchPage = _searchViewViewModel.NowPage - 1;
+        SearchButton_OnClick(sender, e);
+    }
+
+    private void NextPageButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        _searchViewViewModel.SearchPage = _searchViewViewModel.NowPage + 1;
+        SearchButton_OnClick(sender, e);
+    }
+
+    private void LastPageButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        _searchViewViewModel.SearchPage = _searchViewViewModel.TotalPage;
+        SearchButton_OnClick(sender, e);
     }
 }

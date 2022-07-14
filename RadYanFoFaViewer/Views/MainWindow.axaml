@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:RadYanFoFaViewer.Views"
-        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="580"
         x:Class="RadYanFoFaViewer.Views.MainWindow"
-        Width="900" Height="530"
+        Width="900" Height="580"
         Icon="/Assets/logo.png"
         Title="RadYanFoFaViewer - By Radiation">
 
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
     <TabControl Padding="20" >
@@ -25,5 +25,4 @@
             <views:AboutView />
         </TabItem>
     </TabControl>
-
 </Window>
