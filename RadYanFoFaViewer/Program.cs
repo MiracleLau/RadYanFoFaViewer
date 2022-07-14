@@ -2,7 +2,7 @@
 using Avalonia.ReactiveUI;
 using System;
 
-namespace RadYanViewer
+namespace RadYanFoFaViewer
 {
     class Program
     {

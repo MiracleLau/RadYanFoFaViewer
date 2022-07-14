@@ -1,14 +1,14 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:RadYanViewer.ViewModels"
+        xmlns:vm="using:RadYanFoFaViewer.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:RadYanViewer.Views"
+        xmlns:views="clr-namespace:RadYanFoFaViewer.Views"
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="500"
-        x:Class="RadYanViewer.Views.MainWindow"
+        x:Class="RadYanFoFaViewer.Views.MainWindow"
         Width="900" Height="530"
         Icon="/Assets/logo.png"
-        Title="RadYanViewer - By Radiation">
+        Title="RadYanFoFaViewer - By Radiation">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>

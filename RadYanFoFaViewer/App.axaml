@@ -1,7 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:RadYanViewer"
-             x:Class="RadYanViewer.App">
+             xmlns:local="using:RadYanFoFaViewer"
+             x:Class="RadYanFoFaViewer.App">
     <Application.DataTemplates>
         <local:ViewLocator/>
     </Application.DataTemplates>

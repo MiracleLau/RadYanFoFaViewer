@@ -1,4 +1,4 @@
-﻿namespace RadYanViewer.ViewModels
+﻿namespace RadYanFoFaViewer.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {

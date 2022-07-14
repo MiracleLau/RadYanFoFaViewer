@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using RadYanViewer.ViewModels;
-using RadYanViewer.Views;
+using RadYanFoFaViewer.ViewModels;
+using RadYanFoFaViewer.Views;
 
-namespace RadYanViewer
+namespace RadYanFoFaViewer
 {
     public partial class App : Application
     {

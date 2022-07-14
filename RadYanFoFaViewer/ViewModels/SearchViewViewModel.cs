@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using RadYanViewer.Models;
+using RadYanFoFaViewer.Models;
 using ReactiveUI;
 
-namespace RadYanViewer.ViewModels;
+namespace RadYanFoFaViewer.ViewModels;
 
 public class SearchViewViewModel: ViewModelBase
 {

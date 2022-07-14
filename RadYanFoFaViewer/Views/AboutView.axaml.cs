@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace RadYanViewer.Views;
+namespace RadYanFoFaViewer.Views;
 
 public partial class AboutView : UserControl
 {

@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using RadYanViewer.ViewModels;
+using RadYanFoFaViewer.ViewModels;
 
-namespace RadYanViewer
+namespace RadYanFoFaViewer
 {
     public class ViewLocator : IDataTemplate
     {

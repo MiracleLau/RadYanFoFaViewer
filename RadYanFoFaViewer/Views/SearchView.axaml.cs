@@ -3,9 +3,9 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using RadYanFoFaDotNet;
-using RadYanViewer.ViewModels;
+using RadYanFoFaViewer.ViewModels;
 
-namespace RadYanViewer.Views;
+namespace RadYanFoFaViewer.Views;
 
 public partial class SearchView : UserControl
 {

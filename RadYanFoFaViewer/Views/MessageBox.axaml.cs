@@ -4,7 +4,7 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace RadYanViewer.Views;
+namespace RadYanFoFaViewer.Views;
 
 public partial class MessageBox : Window
 {

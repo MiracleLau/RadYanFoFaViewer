@@ -1,6 +1,6 @@
 ﻿using ReactiveUI;
 
-namespace RadYanViewer.ViewModels
+namespace RadYanFoFaViewer.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {

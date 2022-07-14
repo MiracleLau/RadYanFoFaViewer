@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadYanViewer", "RadYanViewer\RadYanViewer.csproj", "{B67BC1A7-F9B2-4CD7-B335-FABD4060CC93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadYanFoFaViewer", "RadYanFoFaViewer\RadYanFoFaViewer.csproj", "{B67BC1A7-F9B2-4CD7-B335-FABD4060CC93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

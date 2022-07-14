@@ -1,4 +1,4 @@
-namespace RadYanViewer.Models;
+namespace RadYanFoFaViewer.Models;
 
 public class SearchResult
 {
