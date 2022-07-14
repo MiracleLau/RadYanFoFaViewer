@@ -19,7 +19,7 @@
             <views:SearchView />
         </TabItem>
         <TabItem Header="设置">
-            
+            <views:SettingView />
         </TabItem>
         <TabItem Header="关于">
             <views:AboutView />

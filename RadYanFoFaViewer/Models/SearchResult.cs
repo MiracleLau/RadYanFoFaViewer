@@ -2,6 +2,7 @@ namespace RadYanFoFaViewer.Models;
 
 public class SearchResult
 {
+    public int Id { get; set; }
     public string Host { get; set; }
     public string IP { get; set; }
     public string Protocol { get; set; }

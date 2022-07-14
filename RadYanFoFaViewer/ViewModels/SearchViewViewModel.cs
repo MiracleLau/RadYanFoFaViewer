@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using RadYanFoFaViewer.Models;
@@ -32,6 +31,14 @@ public class SearchViewViewModel: ViewModelBase
     }
 
     public ObservableCollection<SearchResult> SearchResults { get; set; }
+
+    private bool _isSearchButtonEnabled;
+
+    public bool IsSearchButtonEnabled
+    {
+        get => _isSearchButtonEnabled;
+        set => this.RaiseAndSetIfChanged(ref _isSearchButtonEnabled, value);
+    }
 
     public SearchViewViewModel()
     {
