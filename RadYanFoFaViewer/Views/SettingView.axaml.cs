@@ -12,14 +12,12 @@ namespace RadYanFoFaViewer.Views;
 
 public partial class SettingView : UserControl
 {
-    private SettingViewViewModel _viewModel;
-    private Config _config;
+    private SettingViewViewModel _settingViewViewModel;
     public SettingView()
     {
         InitializeComponent();
-        _viewModel = new SettingViewViewModel();
-        DataContext = _viewModel;
-        _config = new Config();
+        _settingViewViewModel = new SettingViewViewModel();
+        DataContext = _settingViewViewModel;
     }
 
     private void InitializeComponent()
@@ -29,21 +27,22 @@ public partial class SettingView : UserControl
 
     private void SaveConfigButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        _viewModel.IsSaveButtonEnabled = false;
+        var config = new Config();
+        _settingViewViewModel.IsSaveButtonEnabled = false;
         new Task(() =>
         {
-            _config.SetConfig("ApiSetting", new BsonDocument
+            config.SetConfig("ApiSetting", new BsonDocument
             {
-                ["ApiEmail"] = _viewModel.Email,
-                ["ApiKey"] = _viewModel.ApiKey
+                ["ApiEmail"] = _settingViewViewModel.Email,
+                ["ApiKey"] = _settingViewViewModel.ApiKey
             });
-            _config.SetConfig("SearchSetting", new BsonDocument
+            config.SetConfig("SearchSetting", new BsonDocument
             {
-                ["PerPageSize"] = _viewModel.SearchPageSize
+                ["PerPageSize"] = _settingViewViewModel.SearchPageSize
             });
             Dispatcher.UIThread.Post(() =>
             {
-                _viewModel.IsSaveButtonEnabled = true;
+                _settingViewViewModel.IsSaveButtonEnabled = true;
                 new MessageBox().GetStandWindow(msg: "保存成功！").Show();
             });
         }).Start();

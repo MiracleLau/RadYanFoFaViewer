@@ -41,7 +41,7 @@
                 Content="保存" 
                 Width="80" 
                 HorizontalContentAlignment="Center" 
-                x:Name="saveConfigButton"
+                x:Name="SaveConfigButton"
                 Click="SaveConfigButton_OnClick"
                 IsEnabled="{Binding IsSaveButtonEnabled}"></Button>
         </WrapPanel>
