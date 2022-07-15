@@ -7,6 +7,8 @@
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="580"
         x:Class="RadYanFoFaViewer.Views.MainWindow"
         Width="900" Height="580"
+        MaxWidth="900" MaxHeight="580"
+        CanResize="False"
         Icon="/Assets/logo.png"
         Title="RadYanFoFaViewer - By Radiation">
 
