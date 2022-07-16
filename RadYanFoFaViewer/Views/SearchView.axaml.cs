@@ -45,9 +45,9 @@ public partial class SearchView : UserControl
         _searchViewViewModel.IsLoading = true;
         _searchViewViewModel.IsSearchButtonEnabled = false;
         _searchViewViewModel.SearchResults.Clear();
-        try
+        new Task(() =>
         {
-            new Task(() =>
+            try
             {
                 var results = Search.DoSearch(
                     _searchViewViewModel.SearchString,
@@ -56,6 +56,7 @@ public partial class SearchView : UserControl
                     _searchViewViewModel.IsNotFullData);
                 if (results is not null)
                 {
+                    Console.WriteLine("获取到数据了");
                     Dispatcher.UIThread.Post(() =>
                     {
                         _searchViewViewModel.IsLoading = false;
@@ -86,17 +87,23 @@ public partial class SearchView : UserControl
                 }
                 else
                 {
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        _searchViewViewModel.IsLoading = false;
+                        _searchViewViewModel.IsSearchButtonEnabled = true;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Dispatcher.UIThread.Post(() =>
+                {
                     _searchViewViewModel.IsLoading = false;
                     _searchViewViewModel.IsSearchButtonEnabled = true;
-                }
-            }).Start();
-        }
-        catch (Exception ex)
-        {
-            _searchViewViewModel.IsLoading = false;
-            _searchViewViewModel.IsSearchButtonEnabled = true;
-            new MessageBox().GetStandWindow("警告", "发生错误：" + ex.Message).Show();
-        }
+                    new MessageBox().GetStandWindow("发生错误", ex.Message).Show();
+                });
+            }
+        }).Start();
     }
 
     private void SearchStringTextBox_OnKeyUp(object? sender, KeyEventArgs e)
