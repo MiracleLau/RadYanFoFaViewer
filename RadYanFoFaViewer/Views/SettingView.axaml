@@ -37,13 +37,13 @@
             </Grid>
         </StackPanel>
         <WrapPanel DockPanel.Dock="Bottom" Height="30" MaxHeight="30" HorizontalAlignment="Right">
-            <Button 
-                Content="保存" 
-                Width="80" 
-                HorizontalContentAlignment="Center" 
+            <Button
+                Content="保存"
+                Width="80"
+                HorizontalContentAlignment="Center"
                 x:Name="SaveConfigButton"
                 Click="SaveConfigButton_OnClick"
-                IsEnabled="{Binding IsSaveButtonEnabled}"></Button>
+                IsEnabled="{Binding IsSaveButtonEnabled}" />
         </WrapPanel>
     </DockPanel>
 </UserControl>

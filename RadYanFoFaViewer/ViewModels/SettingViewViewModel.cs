@@ -7,53 +7,25 @@ using ReactiveUI;
 
 namespace RadYanFoFaViewer.ViewModels;
 
-
-public class SettingViewViewModel: ViewModelBase
+public class SettingViewViewModel : ViewModelBase
 {
-    private Config _config;
-    private string _email;
-
-    public string Email
-    {
-        get => _email;
-        set => this.RaiseAndSetIfChanged(ref _email, value);
-    }
-    
     private string _apiKey;
-
-    public string ApiKey
-    {
-        get => _apiKey;
-        set => this.RaiseAndSetIfChanged(ref _apiKey, value);
-    }
-
-    private int _searchPageSize;
-
-    public int SearchPageSize
-    {
-        get => _searchPageSize;
-        set => this.RaiseAndSetIfChanged(ref _searchPageSize, value);
-    }
+    private string _email;
 
     private bool _isSaveButtonEnabled = true;
 
-    public bool IsSaveButtonEnabled
-    {
-        get => _isSaveButtonEnabled;
-        set => this.RaiseAndSetIfChanged(ref _isSaveButtonEnabled, value);
-    }
+    private int _searchPageSize;
 
     public SettingViewViewModel()
     {
-        _config = new Config();
         new Task(() =>
         {
-            var apiSetting = _config.GetOrDefaultConfig("ApiSetting", new BsonDocument
+            var apiSetting = Config.GetOrDefaultConfig("ApiSetting", new BsonDocument
             {
                 ["ApiEmail"] = "",
-                ["ApiKey"] = "",
+                ["ApiKey"] = ""
             });
-            var searchSetting = _config.GetOrDefaultConfig("SearchSetting", new BsonDocument
+            var searchSetting = Config.GetOrDefaultConfig("SearchSetting", new BsonDocument
             {
                 ["PerPageSize"] = 20
             });
@@ -62,9 +34,31 @@ public class SettingViewViewModel: ViewModelBase
                 Email = apiSetting["ApiEmail"].AsString;
                 ApiKey = apiSetting["ApiKey"].AsString;
                 SearchPageSize = searchSetting["PerPageSize"].AsInt32;
-                Console.WriteLine(SearchPageSize);
             });
         }).Start();
     }
-    
+
+    public string Email
+    {
+        get => _email;
+        set => this.RaiseAndSetIfChanged(ref _email, value);
+    }
+
+    public string ApiKey
+    {
+        get => _apiKey;
+        set => this.RaiseAndSetIfChanged(ref _apiKey, value);
+    }
+
+    public int SearchPageSize
+    {
+        get => _searchPageSize;
+        set => this.RaiseAndSetIfChanged(ref _searchPageSize, value);
+    }
+
+    public bool IsSaveButtonEnabled
+    {
+        get => _isSaveButtonEnabled;
+        set => this.RaiseAndSetIfChanged(ref _isSaveButtonEnabled, value);
+    }
 }

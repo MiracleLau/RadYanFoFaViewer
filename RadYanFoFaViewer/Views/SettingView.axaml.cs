@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -12,7 +11,8 @@ namespace RadYanFoFaViewer.Views;
 
 public partial class SettingView : UserControl
 {
-    private SettingViewViewModel _settingViewViewModel;
+    private readonly SettingViewViewModel _settingViewViewModel;
+
     public SettingView()
     {
         InitializeComponent();
@@ -27,16 +27,15 @@ public partial class SettingView : UserControl
 
     private void SaveConfigButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        var config = new Config();
         _settingViewViewModel.IsSaveButtonEnabled = false;
         new Task(() =>
         {
-            config.SetConfig("ApiSetting", new BsonDocument
+            Config.SetConfig("ApiSetting", new BsonDocument
             {
                 ["ApiEmail"] = _settingViewViewModel.Email,
                 ["ApiKey"] = _settingViewViewModel.ApiKey
             });
-            config.SetConfig("SearchSetting", new BsonDocument
+            Config.SetConfig("SearchSetting", new BsonDocument
             {
                 ["PerPageSize"] = _settingViewViewModel.SearchPageSize
             });
@@ -46,6 +45,5 @@ public partial class SettingView : UserControl
                 new MessageBox().GetStandWindow(msg: "保存成功！").Show();
             });
         }).Start();
-        
     }
 }

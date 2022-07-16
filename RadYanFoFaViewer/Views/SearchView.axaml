@@ -10,21 +10,23 @@
     </Design.DataContext>
     <StackPanel>
         <Grid RowDefinitions="*,*,30" ColumnDefinitions="*,Auto,Auto,Auto">
-            <TextBox 
-                Grid.Row="0" 
-                Grid.Column="0" 
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="0"
                 Text="{Binding SearchString}"
-                MinWidth="500" 
+                MinWidth="500"
                 x:Name="SearchStringTextBox"
                 FontFamily="Microsoft YaHei,Simsun,苹方-简,宋体-简"
                 KeyUp="SearchStringTextBox_OnKeyUp" />
-            <Button 
-                Grid.Row="0" 
-                Grid.Column="1" 
-                Margin="5,0" 
-                x:Name="SearchButton" 
-                Click="SearchButton_OnClick" 
-                IsEnabled="{Binding IsSearchButtonEnabled }">开始搜索</Button>
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="5,0"
+                x:Name="SearchButton"
+                Click="SearchButton_OnClick"
+                IsEnabled="{Binding IsSearchButtonEnabled }">
+                开始搜索
+            </Button>
             <Button Grid.Row="0" Grid.Column="2" x:Name="ResetButton" Click="ResetButton_OnClick">重置结果</Button>
             <CheckBox Grid.Row="0" Grid.Column="3" IsChecked="{Binding IsNotFullData}" Margin="5,0">只获取最近一年的数据</CheckBox>
             <Grid
@@ -55,34 +57,34 @@
                 AutoGenerateColumns="True"
                 x:Name="SearchResultDataGrid" />
             <WrapPanel
-                Grid.Row="2" 
-                Grid.Column="0" 
-                Grid.ColumnSpan="4" 
-                VerticalAlignment="Center" 
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-                <TextBlock Text="{Binding TotalPageString}" VerticalAlignment="Center"  />
-                <Button 
-                    Content="首页" 
-                    Margin="10,0" 
+                <TextBlock Text="{Binding TotalPageString}" VerticalAlignment="Center" />
+                <Button
+                    Content="首页"
+                    Margin="10,0"
                     IsEnabled="{Binding IsNotFirstPage}"
                     x:Name="FirstPageButton"
-                    Click="FirstPageButton_OnClick"/>
-                <Button 
-                    Content="上一页" 
+                    Click="FirstPageButton_OnClick" />
+                <Button
+                    Content="上一页"
                     IsEnabled="{Binding IsNotFirstPage}"
                     x:Name="PrePageButton"
-                    Click="PrePageButton_OnClick"/>
-                <Button 
-                    Content="下一页" 
-                    Margin="10,0" 
+                    Click="PrePageButton_OnClick" />
+                <Button
+                    Content="下一页"
+                    Margin="10,0"
                     IsEnabled="{Binding IsNotLastPage}"
                     x:Name="NextPageButton"
-                    Click="NextPageButton_OnClick"/>
-                <Button 
+                    Click="NextPageButton_OnClick" />
+                <Button
                     Content="末页"
                     IsEnabled="{Binding IsNotLastPage}"
                     x:Name="LastPageButton"
-                    Click="LastPageButton_OnClick"/>
+                    Click="LastPageButton_OnClick" />
             </WrapPanel>
         </Grid>
     </StackPanel>

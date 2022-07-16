@@ -1,14 +1,10 @@
 using System;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
-using DynamicData;
-using LiteDB;
-using RadYanFoFaDotNet;
 using RadYanFoFaViewer.Utils;
 using RadYanFoFaViewer.ViewModels;
 
@@ -16,7 +12,8 @@ namespace RadYanFoFaViewer.Views;
 
 public partial class SearchView : UserControl
 {
-    private SearchViewViewModel _searchViewViewModel;
+    private readonly SearchViewViewModel _searchViewViewModel;
+
     public SearchView()
     {
         InitializeComponent();
@@ -53,7 +50,7 @@ public partial class SearchView : UserControl
             new Task(() =>
             {
                 var results = Search.DoSearch(
-                    _searchViewViewModel.SearchString, 
+                    _searchViewViewModel.SearchString,
                     _searchViewViewModel.ReturnFields,
                     _searchViewViewModel.SearchPage,
                     _searchViewViewModel.IsNotFullData);
@@ -70,7 +67,8 @@ public partial class SearchView : UserControl
                         {
                             _searchViewViewModel.IsNotFirstPage = true;
                             _searchViewViewModel.IsNotLastPage = false;
-                        }else if(results.Page == 1)
+                        }
+                        else if (results.Page == 1)
                         {
                             _searchViewViewModel.IsNotLastPage = true;
                             _searchViewViewModel.IsNotFirstPage = false;
@@ -80,8 +78,10 @@ public partial class SearchView : UserControl
                             _searchViewViewModel.IsNotFirstPage = true;
                             _searchViewViewModel.IsNotLastPage = true;
                         }
-                        _searchViewViewModel.TotalPageString = $"共{results.Size}条数据，第{results.Page}/{results.TotalPage}页";
-                        results.Results?.ForEach(x=> _searchViewViewModel.SearchResults.Add(x));
+
+                        _searchViewViewModel.TotalPageString =
+                            $"共{results.Size}条数据，第{results.Page}/{results.TotalPage}页";
+                        results.Results?.ForEach(x => _searchViewViewModel.SearchResults.Add(x));
                     });
                 }
                 else

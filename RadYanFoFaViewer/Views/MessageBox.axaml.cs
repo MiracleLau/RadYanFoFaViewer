@@ -1,8 +1,6 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RadYanFoFaViewer.Views;
 
@@ -25,7 +23,7 @@ public partial class MessageBox : Window
 
     public MessageBox GetStandWindow(string title = "消息提示", string msg = "")
     {
-        this.Title = title;
+        Title = title;
         this.FindControl<TextBlock>("MessageContent").Text = msg;
         return this;
     }

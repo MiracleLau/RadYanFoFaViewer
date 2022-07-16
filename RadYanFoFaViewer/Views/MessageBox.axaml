@@ -9,7 +9,9 @@
         CanResize="False"
         Title="MessageBox">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" RowDefinitions="150,30" ColumnDefinitions="*">
-        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="MessageContent" Text="" VerticalAlignment="Center" Padding="5,5" />
-        <Button Grid.Row="1" Grid.Column="0" Content="确认" Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_OnClick"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="MessageContent" Text="" VerticalAlignment="Center"
+                   Padding="5,5" />
+        <Button Grid.Row="1" Grid.Column="0" Content="确认" Width="100" HorizontalContentAlignment="Center"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_OnClick" />
     </Grid>
 </Window>

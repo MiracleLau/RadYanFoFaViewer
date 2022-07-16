@@ -1,6 +1,5 @@
-﻿namespace RadYanFoFaViewer.ViewModels
+﻿namespace RadYanFoFaViewer.ViewModels;
+
+public class MainWindowViewModel : ViewModelBase
 {
-    public class MainWindowViewModel : ViewModelBase
-    {
-    }
 }
