@@ -7,9 +7,8 @@
         mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="580"
         x:Class="RadYanFoFaViewer.Views.MainWindow"
         Width="900" Height="580"
-        MaxWidth="900" MaxHeight="580"
-        CanResize="False"
         Icon="/Assets/logo.png"
+        PropertyChanged="AvaloniaObject_OnPropertyChanged"
         Title="RadYanFoFaViewer - By Radiation">
 
     <Design.DataContext>
@@ -17,14 +16,14 @@
     </Design.DataContext>
 
     <TabControl Padding="20">
-        <TabItem Header="搜索">
-            <views:SearchView />
+        <TabItem Header="搜索" x:Name="SearchViewTabItem">
+            <views:SearchView x:Name="SearchView" />
         </TabItem>
-        <TabItem Header="设置">
-            <views:SettingView />
+        <TabItem Header="设置" x:Name="SettingViewTabItem">
+            <views:SettingView x:Name="SettingView" />
         </TabItem>
-        <TabItem Header="关于">
-            <views:AboutView />
+        <TabItem Header="关于" x:Name="AboutViewTabItem">
+            <views:AboutView x:Name="AboutView" />
         </TabItem>
     </TabControl>
 </Window>
