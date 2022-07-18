@@ -17,7 +17,7 @@ public partial class MainWindow : Window
             var height = Height - 180;
             var searchViewControl = this.GetControl<TabItem>("SearchViewTabItem").GetControl<SearchView>("SearchView")
                 .GetControl<DataGrid>("SearchResultDataGrid");
-            searchViewControl.Height = height;
+            if (searchViewControl is not null) searchViewControl.Height = height;
         }
     }
 }
