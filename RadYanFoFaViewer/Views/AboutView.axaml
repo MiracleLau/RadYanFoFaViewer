@@ -7,7 +7,7 @@
     <StackPanel>
         <Grid RowDefinitions="*,*" ColumnDefinitions="*" HorizontalAlignment="Center">
             <Image Grid.Row="0" Source="../Assets/logo.png" Width="200" Height="200" />
-            <TextBlock Grid.Row="1" Text="作者：Radiation  版本：V1.0.2" />
+            <TextBlock Grid.Row="1" Text="作者：Radiation  版本：V1.0.3" />
         </Grid>
     </StackPanel>
 </UserControl>

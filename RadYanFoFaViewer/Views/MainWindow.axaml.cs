@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 
 namespace RadYanFoFaViewer.Views;
@@ -7,5 +8,16 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+    }
+
+    private void AvaloniaObject_OnPropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+    {
+        if (e.Property.Name == "ClientSize")
+        {
+            var height = Height - 180;
+            var searchViewControl = this.GetControl<TabItem>("SearchViewTabItem").GetControl<SearchView>("SearchView")
+                .GetControl<DataGrid>("SearchResultDataGrid");
+            searchViewControl.Height = height;
+        }
     }
 }
