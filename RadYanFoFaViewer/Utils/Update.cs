@@ -12,7 +12,7 @@ public static class Update
 {
     public const string Version = "V1.1.0";
 
-    private const string UpdateUrl = "https://raw.fastgit.org/MiracleLau/RadYanFoFaViewer/develop/update.json";
+    private const string UpdateUrl = "https://raw.fastgit.org/MiracleLau/RadYanFoFaViewer/master/update.json";
     // private const string UpdateUrl = "http://127.0.0.1:8000/update.json";
 
     public static void AutoCheckUpdate(Action successAction, Action errorAction, bool isStartup = false)
