@@ -11,7 +11,8 @@ namespace RadYanFoFaViewer.Views;
 public partial class UpdateWindow : Window
 {
     private readonly string _releasesUrl = "https://github.com/MiracleLau/RadYanFoFaViewer/releases";
-    private UpdateWindowViewModel _viewModel;
+    private readonly UpdateWindowViewModel _viewModel;
+
     public UpdateWindow()
     {
         InitializeComponent();

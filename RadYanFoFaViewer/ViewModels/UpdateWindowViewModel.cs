@@ -2,8 +2,9 @@ using ReactiveUI;
 
 namespace RadYanFoFaViewer.ViewModels;
 
-public class UpdateWindowViewModel: ViewModelBase
+public class UpdateWindowViewModel : ViewModelBase
 {
+    private string? _updateContent;
     private string? _version;
 
     public string Version
@@ -11,8 +12,6 @@ public class UpdateWindowViewModel: ViewModelBase
         get => _version ?? "";
         set => this.RaiseAndSetIfChanged(ref _version, value);
     }
-    
-    private string? _updateContent;
 
     public string UpdateContent
     {

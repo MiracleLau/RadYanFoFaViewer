@@ -18,7 +18,7 @@
     <DockPanel>
         <Grid RowDefinitions="*,*,*" ColumnDefinitions="*" VerticalAlignment="Top" DockPanel.Dock="Top">
             <TextBlock
-                Grid.Row="0" 
+                Grid.Row="0"
                 Grid.Column="0"
                 FontWeight="Bold"
                 x:Name="VersionTextBlock"
@@ -28,13 +28,14 @@
                 <TextBlock Text="{Binding UpdateContent}" x:Name="UpdateContentTextBlock" TextWrapping="Wrap" />
             </ScrollViewer>
         </Grid>
-        <Grid 
-            DockPanel.Dock="Bottom" 
-            ColumnDefinitions="Auto,Auto" 
-            Margin="0,20,0,0" 
-            VerticalAlignment="Bottom" 
+        <Grid
+            DockPanel.Dock="Bottom"
+            ColumnDefinitions="Auto,Auto"
+            Margin="0,20,0,0"
+            VerticalAlignment="Bottom"
             HorizontalAlignment="Right">
-            <Button Grid.Column="0" Content="前往下载页" x:Name="GoToDownloadPageButton" Click="GoToDownloadPageButton_OnClick" />
+            <Button Grid.Column="0" Content="前往下载页" x:Name="GoToDownloadPageButton"
+                    Click="GoToDownloadPageButton_OnClick" />
             <Button Grid.Column="1" Content="取消" x:Name="CancelButton" Click="CancelButton_OnClick" Margin="10,0,0,0" />
         </Grid>
     </DockPanel>

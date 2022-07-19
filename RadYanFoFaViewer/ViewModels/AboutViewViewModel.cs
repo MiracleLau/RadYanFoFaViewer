@@ -3,11 +3,10 @@ using ReactiveUI;
 
 namespace RadYanFoFaViewer.ViewModels;
 
-public class AboutViewViewModel: ViewModelBase
+public class AboutViewViewModel : ViewModelBase
 {
-    public string Version => $"RadYanFoFaViewer  {Update.Version}";
-
     private bool _isCheckButtonEnable;
+    public string Version => $"RadYanFoFaViewer  {Update.Version}";
 
     public bool IsCheckButtonEnable
     {

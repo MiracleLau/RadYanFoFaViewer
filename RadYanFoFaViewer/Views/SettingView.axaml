@@ -30,13 +30,13 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="ApiKey" Classes="inputLabel" />
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ApiKey}" Classes="inputBox" PasswordChar="*" />
             </Grid>
-            
+
             <TextBlock Text="搜索设置" Classes="settingTitle" />
             <Grid RowDefinitions="*" ColumnDefinitions="100,200">
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="每页数据量" Classes="inputLabel" />
                 <NumericUpDown Grid.Row="0" Grid.Column="1" Value="{Binding SearchPageSize}" Classes="inputBox" />
             </Grid>
-            
+
             <TextBlock Text="更新设置" Classes="settingTitle" />
             <Grid RowDefinitions="*" ColumnDefinitions="*">
                 <CheckBox Content="程序启动时检测更新" IsChecked="{Binding IsAutoCheckUpdate}" />
