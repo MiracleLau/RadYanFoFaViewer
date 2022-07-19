@@ -36,7 +36,7 @@ public class SettingViewViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _isSaveButtonEnabled, value);
     }
 
-    private bool _isAutoCheckUpdate = true;
+    private bool _isAutoCheckUpdate;
     public bool IsAutoCheckUpdate
     {
         get => _isAutoCheckUpdate;

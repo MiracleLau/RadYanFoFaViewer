@@ -42,9 +42,9 @@ public partial class SettingView : UserControl
                 {
                     ["PerPageSize"] = _settingViewViewModel.SearchPageSize
                 });
-                Config.SetConfig("UpdateSetting", new BsonDocument()
+                Config.SetConfig("UpdateSetting", new BsonDocument
                 {
-                    ["AutoCheckUpdate"] = true
+                    ["AutoCheckUpdate"] = _settingViewViewModel.IsAutoCheckUpdate
                 });
                 Dispatcher.UIThread.Post(() =>
                 {

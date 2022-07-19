@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:RadYanFoFaViewer.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RadYanFoFaViewer.Views.UpdateWindow"
+        Title="发现新版本"
+        Width="400"
+        SizeToContent="Height"
+        MaxHeight="500"
+        Padding="20"
+        WindowStartupLocation="CenterOwner"
+        HorizontalContentAlignment="Center">
+    <Design.DataContext>
+        <vm:UpdateWindowViewModel />
+    </Design.DataContext>
+    <DockPanel>
+        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <TextBlock
+                Grid.Row="0" 
+                Grid.Column="0"
+                FontWeight="Bold"
+                x:Name="VersionTextBlock"
+                Text="{Binding Version}" />
+            <TextBlock Grid.Row="1" Text="更新内容：" FontWeight="Bold" Margin="0,10" />
+            <ScrollViewer Grid.Row="2">
+                <TextBlock Text="{Binding UpdateContent}" x:Name="UpdateContentTextBlock" TextWrapping="Wrap" />
+            </ScrollViewer>
+        </Grid>
+        <Grid 
+            DockPanel.Dock="Bottom" 
+            ColumnDefinitions="Auto,Auto" 
+            Margin="0,20,0,0" 
+            VerticalAlignment="Bottom" 
+            HorizontalAlignment="Right">
+            <Button Grid.Column="0" Content="前往下载页" x:Name="GoToDownloadPageButton" Click="GoToDownloadPageButton_OnClick" />
+            <Button Grid.Column="1" Content="取消" x:Name="CancelButton" Click="CancelButton_OnClick" Margin="10,0,0,0" />
+        </Grid>
+    </DockPanel>
+</Window>
