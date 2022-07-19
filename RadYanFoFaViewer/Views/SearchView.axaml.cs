@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.LogicalTree;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using RadYanFoFaViewer.Utils;
 using RadYanFoFaViewer.ViewModels;
 
@@ -56,7 +58,6 @@ public partial class SearchView : UserControl
                     _searchViewViewModel.IsNotFullData);
                 if (results is not null)
                 {
-                    Console.WriteLine("获取到数据了");
                     Dispatcher.UIThread.Post(() =>
                     {
                         _searchViewViewModel.IsLoading = false;
@@ -100,7 +101,7 @@ public partial class SearchView : UserControl
                 {
                     _searchViewViewModel.IsLoading = false;
                     _searchViewViewModel.IsSearchButtonEnabled = true;
-                    new MessageBox().GetStandWindow("发生错误", ex.Message).Show();
+                    Utils.MessageBox.NormalMsgBox("发生错误", ex.Message).Show();
                 });
             }
         }).Start();

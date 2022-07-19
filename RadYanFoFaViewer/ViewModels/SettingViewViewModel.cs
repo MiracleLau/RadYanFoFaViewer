@@ -26,7 +26,7 @@ public class SettingViewViewModel : ViewModelBase
             });
             var searchSetting = Config.GetOrDefaultConfig("SearchSetting", new BsonDocument
             {
-                ["PerPageSize"] = 20
+                ["PerPageSize"] = 100
             });
             Dispatcher.UIThread.Post(() =>
             {
@@ -51,7 +51,7 @@ public class SettingViewViewModel : ViewModelBase
 
     public int SearchPageSize
     {
-        get => _searchPageSize;
+        get => _searchPageSize == 0 ? 100 : _searchPageSize;
         set => this.RaiseAndSetIfChanged(ref _searchPageSize, value);
     }
 
