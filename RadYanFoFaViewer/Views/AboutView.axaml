@@ -5,9 +5,10 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RadYanFoFaViewer.Views.AboutView">
     <StackPanel>
-        <Grid RowDefinitions="*,*" ColumnDefinitions="*" HorizontalAlignment="Center">
+        <Grid RowDefinitions="*,*,*" ColumnDefinitions="*" HorizontalAlignment="Center">
             <Image Grid.Row="0" Source="../Assets/logo.png" Width="200" Height="200" />
             <TextBlock Grid.Row="1" Text="作者：Radiation  版本：V1.0.3" />
+            <Button Grid.Row="2" Content="检查更新" x:Name="CheckUpdateButton" Margin="0,10" HorizontalAlignment="Center" />
         </Grid>
     </StackPanel>
 </UserControl>

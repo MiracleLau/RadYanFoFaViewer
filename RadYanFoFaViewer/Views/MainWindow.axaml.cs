@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 
@@ -19,5 +20,10 @@ public partial class MainWindow : Window
                 .GetControl<DataGrid>("SearchResultDataGrid");
             if (searchViewControl is not null) searchViewControl.Height = height;
         }
+    }
+
+    private void StyledElement_OnInitialized(object? sender, EventArgs e)
+    {
+        
     }
 }

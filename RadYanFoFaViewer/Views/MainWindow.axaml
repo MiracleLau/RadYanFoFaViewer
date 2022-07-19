@@ -9,6 +9,7 @@
         Width="900" Height="580"
         Icon="/Assets/logo.png"
         WindowStartupLocation="CenterScreen"
+        Initialized="StyledElement_OnInitialized"
         PropertyChanged="AvaloniaObject_OnPropertyChanged"
         Title="RadYanFoFaViewer - By Radiation">
 
