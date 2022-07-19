@@ -22,8 +22,7 @@ public partial class MainWindow : Window
             if (searchViewControl is not null) searchViewControl.Height = height;
         }
     }
-
-    private void StyledElement_OnInitialized(object? sender, EventArgs e)
+    private void WindowBase_OnActivated(object? sender, EventArgs e)
     {
         Update.AutoCheckUpdate(() => { }, () => { }, true);
     }
