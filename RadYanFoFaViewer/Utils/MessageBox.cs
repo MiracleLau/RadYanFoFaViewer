@@ -1,3 +1,4 @@
+using Avalonia.Controls;
 using MessageBox.Avalonia;
 using MessageBox.Avalonia.BaseWindows.Base;
 using MessageBox.Avalonia.DTO;
@@ -8,7 +9,7 @@ namespace RadYanFoFaViewer.Utils;
 public static class MessageBox
 {
     /// <summary>
-    /// 显示一个普通的提示框
+    ///     显示一个普通的提示框
     /// </summary>
     /// <param name="title">提示框标题</param>
     /// <param name="msg">提示框内容</param>
@@ -23,8 +24,9 @@ public static class MessageBox
             ButtonDefinitions = new[]
             {
                 new ButtonDefinition
-                    { Name = "确认", IsDefault = true }
-            }
+                    {Name = "确认", IsDefault = true}
+            },
+            WindowStartupLocation = WindowStartupLocation.CenterOwner
         });
         return msgBox;
     }
