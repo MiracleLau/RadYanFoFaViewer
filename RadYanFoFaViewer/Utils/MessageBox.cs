@@ -1,6 +1,7 @@
 using MessageBox.Avalonia;
 using MessageBox.Avalonia.BaseWindows.Base;
 using MessageBox.Avalonia.DTO;
+using MessageBox.Avalonia.Models;
 
 namespace RadYanFoFaViewer.Utils;
 
@@ -18,7 +19,12 @@ public static class MessageBox
         {
             ContentTitle = title,
             ContentMessage = msg,
-            FontFamily = "Microsoft YaHei,Simsun,苹方-简,宋体-简"
+            FontFamily = "Microsoft YaHei,Simsun,苹方-简,宋体-简",
+            ButtonDefinitions = new[]
+            {
+                new ButtonDefinition
+                    { Name = "确认", IsDefault = true }
+            }
         });
         return msgBox;
     }
