@@ -1,6 +1,8 @@
+using System;
+
 namespace RadYanFoFaViewer.Utils;
 
 public class Database
 {
-    protected const string DbFile = @"data.db";
+    protected static readonly string DbFile = $"{AppContext.BaseDirectory}data.db";
 }

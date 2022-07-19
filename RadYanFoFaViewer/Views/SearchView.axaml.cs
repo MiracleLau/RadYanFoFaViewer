@@ -55,8 +55,6 @@ public partial class SearchView : UserControl
                     _searchViewViewModel.SearchPage,
                     _searchViewViewModel.IsNotFullData);
                 if (results is not null)
-                {
-                    Console.WriteLine("获取到数据了");
                     Dispatcher.UIThread.Post(() =>
                     {
                         _searchViewViewModel.IsLoading = false;
@@ -84,15 +82,12 @@ public partial class SearchView : UserControl
                             $"共{results.Size}条数据，第{results.Page}/{results.TotalPage}页";
                         results.Results?.ForEach(x => _searchViewViewModel.SearchResults.Add(x));
                     });
-                }
                 else
-                {
                     Dispatcher.UIThread.Post(() =>
                     {
                         _searchViewViewModel.IsLoading = false;
                         _searchViewViewModel.IsSearchButtonEnabled = true;
                     });
-                }
             }
             catch (Exception ex)
             {
@@ -100,7 +95,7 @@ public partial class SearchView : UserControl
                 {
                     _searchViewViewModel.IsLoading = false;
                     _searchViewViewModel.IsSearchButtonEnabled = true;
-                    new MessageBox().GetStandWindow("发生错误", ex.Message).Show();
+                    Utils.MessageBox.NormalMsgBox("发生错误", ex.Message).Show();
                 });
             }
         }).Start();
@@ -109,6 +104,7 @@ public partial class SearchView : UserControl
     private void SearchStringTextBox_OnKeyUp(object? sender, KeyEventArgs e)
     {
         _searchViewViewModel.IsSearchButtonEnabled = !string.IsNullOrEmpty(_searchViewViewModel.SearchString);
+        if (e.Key == Key.Enter) SearchButton_OnClick(sender, e);
     }
 
     private void FirstPageButton_OnClick(object? sender, RoutedEventArgs e)
@@ -133,5 +129,11 @@ public partial class SearchView : UserControl
     {
         _searchViewViewModel.SearchPage = _searchViewViewModel.TotalPage;
         SearchButton_OnClick(sender, e);
+    }
+
+    private void SearchStringTextBox_OnInitialized(object? sender, EventArgs e)
+    {
+        var textbox = this.GetControl<TextBox>("SearchStringTextBox");
+        textbox!.Focus();
     }
 }

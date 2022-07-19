@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -30,20 +31,35 @@ public partial class SettingView : UserControl
         _settingViewViewModel.IsSaveButtonEnabled = false;
         new Task(() =>
         {
-            Config.SetConfig("ApiSetting", new BsonDocument
+            try
             {
-                ["ApiEmail"] = _settingViewViewModel.Email,
-                ["ApiKey"] = _settingViewViewModel.ApiKey
-            });
-            Config.SetConfig("SearchSetting", new BsonDocument
+                Config.SetConfig("ApiSetting", new BsonDocument
+                {
+                    ["ApiEmail"] = _settingViewViewModel.Email,
+                    ["ApiKey"] = _settingViewViewModel.ApiKey
+                });
+                Config.SetConfig("SearchSetting", new BsonDocument
+                {
+                    ["PerPageSize"] = _settingViewViewModel.SearchPageSize
+                });
+                Config.SetConfig("UpdateSetting", new BsonDocument
+                {
+                    ["AutoCheckUpdate"] = _settingViewViewModel.IsAutoCheckUpdate
+                });
+                Dispatcher.UIThread.Post(() =>
+                {
+                    _settingViewViewModel.IsSaveButtonEnabled = true;
+                    Utils.MessageBox.NormalMsgBox(msg: "保存成功！").Show();
+                });
+            }
+            catch (Exception ex)
             {
-                ["PerPageSize"] = _settingViewViewModel.SearchPageSize
-            });
-            Dispatcher.UIThread.Post(() =>
-            {
-                _settingViewViewModel.IsSaveButtonEnabled = true;
-                new MessageBox().GetStandWindow(msg: "保存成功！").Show();
-            });
+                Dispatcher.UIThread.Post(() =>
+                {
+                    _settingViewViewModel.IsSaveButtonEnabled = true;
+                    Utils.MessageBox.NormalMsgBox(msg: $"保存失败：{ex.Message}").Show();
+                });
+            }
         }).Start();
     }
 }

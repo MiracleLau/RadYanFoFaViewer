@@ -36,7 +36,7 @@ public class Config : Database
     /// <param name="key">配置的key</param>
     /// <param name="value">配置的值</param>
     /// <returns>是否成功</returns>
-    public static bool SetConfig(string key, BsonValue value)
+    public static bool SetConfig(string key, BsonValue? value)
     {
         using var db = new LiteDatabase(DbFile);
         var collection = db.GetCollection<ConfigModel>("configs");

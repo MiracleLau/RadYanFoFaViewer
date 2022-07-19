@@ -42,7 +42,7 @@ public static class Search
         var client = new FoFaClient(apiEmail, apiKey);
         client.SetGetFields(fields);
         var result = client.Search(searchString, page, pageSize, !isNotFullData);
-        if (result is not {Error: false}) throw new Exception("未能获取数据，可能是Api Key信息未设置或超出每日额度。");
+        if (result is not {Error: false}) throw new Exception("未能获取数据，可能是Api Key信息未正确设置或者搜索语句不正确。");
         if (result.Results == null) return null;
         var totalPage = result.Size / pageSize;
         if (result.Size % pageSize != 0) totalPage += 1;
