@@ -10,7 +10,7 @@ namespace RadYanFoFaViewer.Utils;
 
 public static class Update
 {
-    public const string Version = "V1.1.0";
+    public const string Version = "V1.1.1";
 
     private const string UpdateUrl = "https://raw.fastgit.org/MiracleLau/RadYanFoFaViewer/master/update.json";
     // private const string UpdateUrl = "http://127.0.0.1:8000/update.json";
@@ -33,7 +33,7 @@ public static class Update
                 var options = new RestClientOptions(UpdateUrl)
                 {
                     ThrowOnAnyError = true,
-                    MaxTimeout = 2000
+                    MaxTimeout = 3000
                 };
                 var client = new RestClient(options);
                 var updateInfo = client.Get<UpdateInfo>(new RestRequest());

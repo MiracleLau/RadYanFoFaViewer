@@ -1,4 +1,4 @@
 {
-    "version":"V1.1.0",
-    "updateContent":"添加自动更新功能"
+    "version":"V1.1.1",
+    "updateContent":"修复程序启动自动检测更新失败时，频繁弹出提示的bug"
 }
